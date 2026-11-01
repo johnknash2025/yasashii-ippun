@@ -1,0 +1,13 @@
+{
+  "name": "yasashii-ippun",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "pack": "node scripts/pack.mjs"
+  },
+  "devDependencies": {
+    "crx3": "^1.1.3"
+  }
+}
