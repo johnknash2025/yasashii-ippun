@@ -1,51 +1,53 @@
-# やさしい一分 (Yasashii Ippun)
+# Yasashii Ippun
 
-**60秒の休憩ガイドと、とげのある文をやわらかくする言い換えのChrome拡張（Manifest V3）。すべてブラウザ内で動き、外部には何も送りません。**
+English | [日本語](README.ja.md)
 
-A small Chrome extension: a 60-second breathing break and a simple rule-based softener for blunt Japanese sentences. Everything runs locally. Interface is Japanese.
+**A Chrome extension (Manifest V3): a 60-second break guide and a rephraser that turns sharp sentences gentle. Everything runs in the browser and nothing is ever sent outside.**
 
-## できること
-- **60秒休憩**：ツールバーのボタンから、呼吸に合わせた60秒のガイドを表示します。
-- **スクロール休憩の提案**：設定で指定したサイトでたくさんスクロールしたときだけ、休憩を提案します。既定ではオフです。
-- **やさしい言い換え**：文を選んで右クリック →「やさしく言い換える」。単純なルールでの言い換えで、AIは使いません。
-- **記録**：今日の回数、連続日数、合計回数をブラウザ内に保存します。
+A small Chrome extension ("yasashii ippun" means "one gentle minute"): a 60-second breathing break and a simple rule-based softener for blunt Japanese sentences. Everything runs locally. The extension interface is Japanese.
 
-## インストール
+## Features
+- **60-second break**: the toolbar button shows a 60-second guide paced to your breathing.
+- **Scroll-break suggestions**: only when you scroll a lot on sites you list in settings. Off by default.
+- **Gentle rephrasing**: select a sentence, right-click, and pick the rephrase item "やさしく言い換える" (menu labels are in Japanese). Rule-based only; no AI is used.
+- **Tracking**: today's count, streak days, and total count are stored in the browser.
 
-### 方法1：zipから読み込む（Windows・Mac・Linux）
-1. [Releases](https://github.com/johnknash2025/yasashii-ippun/releases/latest) から `yasashii-ippun-<version>.zip` をダウンロードして展開
-2. Chromeで `chrome://extensions` を開き、右上の「デベロッパーモード」をオン
-3. 「パッケージ化されていない拡張機能を読み込む」で、展開したフォルダを選択
+## Install
 
-ソースから使う場合は、このリポジトリの `extension/` フォルダを同じ手順で読み込めます。
+### Method 1: load the zip (Windows, Mac, Linux)
+1. Download and unpack `yasashii-ippun-<version>.zip` from [Releases](https://github.com/johnknash2025/yasashii-ippun/releases/latest)
+2. Open `chrome://extensions` in Chrome and turn on "Developer mode" (top right)
+3. Click "Load unpacked extension" and select the unpacked folder
 
-### 方法2：.crxファイル（主にLinux）
-Releases の `.crx` を `chrome://extensions` にドラッグ＆ドロップします。Windows・MacのChromeはストア外の.crxを受け付けないことが多いので、方法1を使ってください。
+If you use the source directly, the `extension/` folder in this repository loads the same way.
 
-## 権限
-| 権限 | 理由 |
+### Method 2: .crx file (mostly Linux)
+Drag and drop the `.crx` from Releases onto `chrome://extensions`. Chrome on Windows and Mac usually rejects .crx files from outside the store, so use Method 1 there.
+
+## Permissions
+| Permission | Why |
 | --- | --- |
-| storage | 設定と休憩の記録を保存 |
-| contextMenus | 右クリックの「やさしく言い換える」 |
-| activeTab, scripting | ボタンや右クリックを押したタブにだけ表示を出す |
-| サイトへのアクセス（任意） | 設定で書いたサイトの分だけ、保存時に許可を求めます |
+| storage | save settings and break records |
+| contextMenus | the right-click "やさしく言い換える" item |
+| activeTab, scripting | show the overlay only in the tab where you clicked the button or menu item |
+| site access (optional) | requested only for the sites you list in settings, when you save them |
 
-## 開発
+## Development
 ```
 npm install
-npm test        # ロジックの単体テスト
-npm run pack    # dist/ に zip と crx を作成（鍵は KEY_PATH、リポジトリには入れない）
+npm test        # unit tests for the logic
+npm run pack    # builds zip and crx in dist/ (key via KEY_PATH, never stored in the repo)
 ```
 
-## 状況
-| 確認済み | 方法 |
+## Status
+| Verified | How |
 | --- | --- |
-| サイト判定、統計、言い換えルール | 自動テスト5件が合格 |
-| 全スクリプトの構文 | Node.jsで構文チェック |
-| **未確認** | |
-| 実際のChromeでの一通りの動作 | まだ手元のChromeで通しで試していません |
+| site matching, stats, rephrase rules | automated tests pass (5 tests) |
+| syntax of all scripts | Node.js syntax check |
+| **Not verified** | |
+| a full run in a real Chrome | not yet tried start-to-finish in a local Chrome |
 
-不具合や要望は [Issue](https://github.com/johnknash2025/yasashii-ippun/issues/new?template=feedback.yml) へどうぞ。
+Bugs and requests: open an [Issue](https://github.com/johnknash2025/yasashii-ippun/issues/new?template=feedback.yml).
 
-## ライセンス
+## License
 [MIT](LICENSE) © johnkhappy
